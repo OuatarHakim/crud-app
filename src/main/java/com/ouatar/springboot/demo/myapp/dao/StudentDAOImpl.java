@@ -27,7 +27,6 @@ public class StudentDAOImpl implements StudentDAO{
     @Override
     @Transactional
     public void save(Student theStudent) {
-
         entityManager.persist(theStudent);
     }
 
@@ -47,5 +46,26 @@ public class StudentDAOImpl implements StudentDAO{
         TypedQuery<Student> thequery = entityManager.createQuery("FROM Student WHERE lastname=:thedata",Student.class);
         thequery.setParameter("thedata",lastname);
         return thequery.getResultList();
+    }
+
+    @Override
+    @Transactional
+    public void update(Student student) {
+        Student student1 = entityManager.merge(student);
+
+    }
+
+    @Override
+    @Transactional
+    public void delete(int id) {
+       Student s = entityManager.find(Student.class,id);
+       entityManager.remove(s);
+    }
+
+    @Override
+    @Transactional
+    public int deleteAll() {
+        int numRowsDeleted = entityManager.createQuery("DELETE FROM Student").executeUpdate();
+        return  numRowsDeleted;
     }
 }

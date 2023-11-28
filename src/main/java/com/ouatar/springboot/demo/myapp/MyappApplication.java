@@ -24,9 +24,28 @@ public class MyappApplication {
 		  // createMultipleStudents( studentDAO);
 		  // readStudent(studentDAO);
 		  // queryForStudent(studentDAO);
-	      readStudentByLastName(studentDAO);
+	      //readStudentByLastName(studentDAO);
+	        updateStudent(studentDAO);
+			deleteStudent(studentDAO);
 	   };
    }
+
+   private void deleteAllStudents(StudentDAO studentDAO){
+	   System.out.println("Deleting all students ");
+	   int numRowDeleted  = studentDAO.deleteAll();
+	   System.out.println("Number rows deleted : " +  numRowDeleted);
+   }
+	private void deleteStudent(StudentDAO studentDAO) {
+		studentDAO.delete(5);
+	}
+
+	private void updateStudent(StudentDAO studentDAO) {
+	   int id = 1 ;
+	   Student s = studentDAO.findById(id);
+	   s.setFirstname("Hak");
+	   studentDAO.update(s);
+
+	}
 
 	private void readStudentByLastName(StudentDAO studentDAO) {
 		List<Student> thestudents = studentDAO.findByLastName("Hakim");
