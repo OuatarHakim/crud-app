@@ -21,12 +21,12 @@ public class MyappApplication {
 	   return runner -> {
 
 		  // createStudent(studentDAO);
-		  // createMultipleStudents( studentDAO);
+		   createMultipleStudents( studentDAO);
 		  // readStudent(studentDAO);
 		  // queryForStudent(studentDAO);
 	      //readStudentByLastName(studentDAO);
-	        updateStudent(studentDAO);
-			deleteStudent(studentDAO);
+	       // updateStudent(studentDAO);
+			//deleteStudent(studentDAO);
 	   };
    }
 
